@@ -33,10 +33,15 @@ public class UserService {
 		updateData(user, obj);
 		return repository.save(obj);
 	}
+	
 	private void updateData(User user,User obj) {
 		obj.setName(user.getName());
 		obj.setEmail(user.getEmail());
 		obj.setPassword(user.getPassword());
 	}
 	
+	public void delete(Integer id) {
+		User user = repository.getOne(id);
+		repository.delete(user);
+	}
 }
