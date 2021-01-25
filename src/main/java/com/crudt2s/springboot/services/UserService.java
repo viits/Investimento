@@ -24,8 +24,19 @@ public class UserService {
 	}
 	
 	public User convert(UserDTO userDTO) {
-		User user = new User(null,userDTO.getName(),userDTO.getEmail(),userDTO.getPassword());
+		User user = new User(userDTO.getId(),userDTO.getName(),userDTO.getEmail(),userDTO.getPassword());
 		return user;
+	}
+	
+	public User update(User user) {
+		User obj = repository.getOne(user.getId());
+		updateData(user, obj);
+		return repository.save(obj);
+	}
+	private void updateData(User user,User obj) {
+		obj.setName(user.getName());
+		obj.setEmail(user.getEmail());
+		obj.setPassword(user.getPassword());
 	}
 	
 }
