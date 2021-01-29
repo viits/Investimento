@@ -14,6 +14,7 @@ public class AcaoDTO implements Serializable {
 	private Double valorCompra;
 	private Integer quantidadeAcao;
 	private Date diaCompra;
+	private UserDTO user;
 	
 	public AcaoDTO() {
 		
@@ -24,6 +25,7 @@ public class AcaoDTO implements Serializable {
 		this.valorCompra = acao.getValorCompra();
 		this.quantidadeAcao = acao.getQuantidadeAcao();
 		this.diaCompra = acao.getDiaCompra();
+		this.setUser(new UserDTO(acao.getUser()));
 	}
 	public Integer getId() {
 		return id;
@@ -54,6 +56,12 @@ public class AcaoDTO implements Serializable {
 	}
 	public void setDiaCompra(Date diaCompra) {
 		this.diaCompra = diaCompra;
+	}
+	public UserDTO getUser() {
+		return user;
+	}
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
 	
 	
