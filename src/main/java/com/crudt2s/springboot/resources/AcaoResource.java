@@ -1,5 +1,6 @@
 package com.crudt2s.springboot.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,17 @@ public class AcaoResource {
 	private AcaoService service;
 	
 	@GetMapping
-	public ResponseEntity<List<Acao>> findAll(){
+	public ResponseEntity<List<AcaoDTO>> findAll(){
 		List<Acao> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		List<AcaoDTO> acao = new ArrayList<>();
+		for(Acao a : list) {
+			acao.add(new AcaoDTO(a));
+		}
+		
+		for(AcaoDTO a : acao) {
+			a.setTotal(a.totalAcao());
+		}
+		return ResponseEntity.ok().body(acao);
 	}
 	
 	@PostMapping

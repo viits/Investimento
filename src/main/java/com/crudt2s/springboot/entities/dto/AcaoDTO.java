@@ -15,6 +15,7 @@ public class AcaoDTO implements Serializable {
 	private Integer quantidadeAcao;
 	private Date diaCompra;
 	private UserDTO user;
+	private Double total;
 	
 	public AcaoDTO() {
 		
@@ -64,6 +65,16 @@ public class AcaoDTO implements Serializable {
 		this.user = user;
 	}
 	
+	public Double getTotal() {
+		return total;
+	}
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+	
+	public Double totalAcao() {
+		return this.valorCompra * this.quantidadeAcao;
+	}
 	
 	
 	
