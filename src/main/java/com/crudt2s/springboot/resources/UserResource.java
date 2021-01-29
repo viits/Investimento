@@ -31,20 +31,16 @@ public class UserResource {
 	
 	@PostMapping
 	public ResponseEntity<UserDTO> insert(@RequestBody UserDTO userDTO){
-	
 		User obj = service.convert(userDTO); 
 			 obj = service.insert(obj);
-		
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<UserDTO> update(@PathVariable Integer id,@RequestBody UserDTO user){
-		
+	public ResponseEntity<UserDTO> update(@PathVariable Integer id,@RequestBody UserDTO user){		
 		User obj = service.convert(user);
 		obj.setId(id);
-		obj = service.update(obj);
-		
+		obj = service.update(obj);		
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
 	

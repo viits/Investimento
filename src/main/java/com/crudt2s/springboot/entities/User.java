@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name="tb_user")
 public class User  implements Serializable{
@@ -25,7 +23,7 @@ public class User  implements Serializable{
 	private String name;
 	private String email;
 	private String password;
-	@JsonIgnore
+	
 	@OneToMany(mappedBy="user")
 	Set<Acao> acao = new HashSet<>();
 	
