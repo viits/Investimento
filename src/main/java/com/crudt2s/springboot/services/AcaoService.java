@@ -29,6 +29,12 @@ public class AcaoService {
 		return repository.save(acao);
 	}
 	
+	public  void delete(Integer id) {
+		
+		repository.deleteById(id);
+
+	}
+	
 	private void updateData(Acao obj,Acao acao) {
 		obj.setName(acao.getName());
 		obj.setValorCompra(acao.getValorCompra());
@@ -40,5 +46,7 @@ public class AcaoService {
 		Acao acao = new  Acao(acaoDTO.getId(),acaoDTO.getName(),acaoDTO.getValorCompra(),acaoDTO.getQuantidadeAcao(),acaoDTO.getDiaCompra());
 		return acao;
 	}
+	
+	
 	
 }
